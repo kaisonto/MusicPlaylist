@@ -50,6 +50,37 @@ public class Album {
         return false;
     }
 
+    private class SongList {
+        private ArrayList<Song> songs;
 
+        public SongList() {
+            this.songs = new ArrayList<Song>();
+        }
+
+        public boolean add(Song song){
+            if(songs.contains(song)){
+                return false;
+            }
+            return true;
+        }
+
+        private Song findSong(String songTitle){
+            for(Song checkedSong: this.songs){
+                if (checkedSong.getSongTitle().equals(songTitle)){
+                    return checkedSong;
+                }
+            }
+            return null;
+        }
+
+        private Song findSong(int trackNumber){
+            int index = trackNumber-1;
+            if ((index > 0) && index<songs.size()){
+                return songs.get(index);
+            }
+            return null;
+        }
+
+    }
 
 }
